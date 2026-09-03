@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive Caction Leave Management prototype" />
+  <title>Caction Leave</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn menu" aria-label="Open navigation">☰</button>
+    <div class="brand" aria-label="Caction"><span class="brand-mark"><i></i></span><span class="brand-line">Labor gives birth to ideas.</span></div>
+    <div class="top-actions">
+      <button class="top-pill">⌕ <span>Ctrl K</span></button>
+      <button class="top-pill desktop-only">▣ Change Log</button>
+      <button class="top-pill desktop-only">◇ Tutorial</button>
+      <button class="top-pill">◉ <span id="credit">439.13</span></button>
+      <button class="top-icon" id="notificationBtn" aria-label="Notifications">♧<b>3</b></button>
+      <div class="profile-wrap">
+        <button class="profile" id="profileBtn"><span class="avatar">JK</span><span id="profileName">Janice</span><span>⌄</span></button>
+        <div class="role-menu" id="roleMenu">
+          <p>Preview as</p>
+          <button data-role="employee"><span class="avatar blue">AN</span><span><strong>Aina Nordin</strong><small>Normal User</small></span></button>
+          <button data-role="manager"><span class="avatar gold">DR</span><span><strong>Daniel Razak</strong><small>HR Manager</small></span></button>
+          <button data-role="admin"><span class="avatar">JK</span><span><strong>Janice</strong><small>HR Super Admin</small></span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <div class="module"><span class="module-icon">◷</span><span>Leave</span></div>
+    <nav id="mainNav">
+      <p class="nav-label">MY LEAVE</p>
+      <button class="nav-item active" data-page="home"><span>⌂</span>Leave Home</button>
+      <button class="nav-item" data-page="apply"><span>＋</span>Apply Leave</button>
+      <button class="nav-item" data-page="applications"><span>▤</span>My Applications</button>
+      <p class="nav-label hr-only">MANAGE</p>
+      <button class="nav-item hr-only" data-page="approval"><span>✓</span>Approval <em id="approvalBadge">3</em></button>
+      <button class="nav-item hr-only" data-page="report"><span>▥</span>Leave Report</button>
+      <p class="nav-label admin-only">ADMINISTRATION</p>
+      <button class="nav-item admin-only" data-page="settings"><span>⚙</span>Leave Settings</button>
+    </nav>
+    <div class="sidebar-foot"><span class="avatar">JK</span><div><strong id="sideName">Janice</strong><small id="sideRole">HR Super Admin</small></div></div>
+  </aside>
+
+  <main id="app"></main>
+  <div id="toast" class="toast" role="status"></div>
+
+  <div class="drawer" id="notificationDrawer">
+    <div class="drawer-head"><div><small>UPDATES</small><h2>Notifications</h2></div><button class="icon-btn" data-close="notificationDrawer">×</button></div>
+    <div class="notification unread" data-open-request="LV-2026-0081"><span class="notice-icon pink">✓</span><div><strong>Leave request approved</strong><p>Your Annual Leave request for 8–9 Sep has been approved.</p><small>12 minutes ago</small></div></div>
+    <div class="notification unread" data-page-link="approval"><span class="notice-icon blue">↗</span><div><strong>New approval required</strong><p>Aina Nordin submitted a Medical Leave request.</p><small>1 hour ago</small></div></div>
+    <div class="notification"><span class="notice-icon gold">!</span><div><strong>Carry-forward expiring</strong><p>1.5 days of Annual Leave expires on 31 Dec 2026.</p><small>Yesterday</small></div></div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <dialog id="confirmDialog" class="dialog">
+    <form method="dialog"><div class="dialog-icon">!</div><h3 id="dialogTitle">Confirm action</h3><p id="dialogText"></p><label id="noteWrap">Reason <span>*</span><textarea id="dialogNote" placeholder="Add a clear reason..."></textarea></label><div class="dialog-actions"><button class="btn secondary" value="cancel">Cancel</button><button class="btn primary" id="dialogConfirm" value="default">Confirm</button></div></form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
